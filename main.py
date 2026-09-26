@@ -309,7 +309,7 @@ Rules:
 - Return valid JSON only.
 
 Resume:
-{text}
+{request.text}
 """
 
     try:
@@ -331,6 +331,9 @@ Resume:
         )
 
         return result
+
+    except HTTPException:
+        raise
 
     except Exception as e:
         handle_ai_error(
